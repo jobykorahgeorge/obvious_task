@@ -14,6 +14,5 @@
         android:clickable="true"
         android:focusable="true"
         android:transitionName="image"
-        android:background="@drawable/gradient_bg"
         android:foreground="?android:attr/selectableItemBackgroundBorderless"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

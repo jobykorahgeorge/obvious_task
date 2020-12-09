@@ -1,7 +1,9 @@
 package com.jkg.nasapics.view.activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,19 +47,21 @@ public class HomeGridView extends AppCompatActivity implements HomeGridItemClick
             }
             detailsModelList.addAll(imageDetailsModels);
             recyclerAdapter.notifyDataSetChanged();
+            binding.errorMessage.setVisibility(View.GONE);
         });
         detailsViewModel.parseError.observe(this, isError -> {
             if(isError!=null){
-
+                binding.errorMessage.setVisibility(isError? View.VISIBLE: View.GONE);
             }
         });
     }
 
     @Override
-    public void itemClickedAtPosition(int position) {
+    public void itemClickedAtPosition(int position, View imageView) {
         Intent detailViewIntent = new Intent(HomeGridView.this,ImageDetailView.class);
         detailViewIntent.putExtra("data",(Serializable)detailsModelList);
         detailViewIntent.putExtra("position",position);
-        startActivity(detailViewIntent);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this,imageView,"image");
+        startActivity(detailViewIntent,options.toBundle());
     }
 }
