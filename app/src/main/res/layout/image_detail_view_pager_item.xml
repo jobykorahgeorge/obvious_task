@@ -20,7 +20,8 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:contentDescription="@string/image_detail_view"
                     android:scaleType="centerInside"
-                    android:background="@color/trans_grey"/>
+                    android:background="@color/trans_grey"
+                    android:transitionName="image"/>
                 <TextView
                     android:id="@+id/picCredits"
                     android:layout_width="match_parent"

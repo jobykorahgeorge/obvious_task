@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:elevation="4dp"
-        android:background="@color/toolbar_bg"
+        android:elevation="6dp"
+        android:background="@drawable/gradient_bg"
         app:title="@string/home_toolbar_title"
         app:titleTextColor="@color/toolbar_text_color"
         />
@@ -21,5 +21,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?actionBarSize"/>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/errorMessage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/error_message"
+        android:textSize="18sp"
+        android:textColor="@color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
