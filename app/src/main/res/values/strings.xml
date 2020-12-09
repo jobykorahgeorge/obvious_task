@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">NASA Pics</string>
+    <string name="home_toolbar_title">NASA Pics</string>
+    <string name="grid_recycler_item">Home page grid view recycler item image</string>
+    <string name="image_detail_view">full size image in detail activity</string>
 </resources>
