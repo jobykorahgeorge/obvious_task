@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.jkg.nasapics.R;
 import com.jkg.nasapics.databinding.ImageDetailViewPagerItemBinding;
 import com.jkg.nasapics.models.ImageDetailsModel;
 
@@ -53,7 +54,7 @@ public class ImageDetailViewPagerAdapter extends RecyclerView.Adapter<ImageDetai
             binding.imageDate.setText(detailsModel.getDate());
             binding.imageExplanation.setText(detailsModel.getExplanation());
             binding.picCredits.setText(detailsModel.getCopyright());
-            Glide.with(context).load(detailsModel.getHdurl()).into(binding.detailEnlargedImage);
+            Glide.with(context).load(detailsModel.getHdurl()).placeholder(R.drawable.placeholder_image_rotate).into(binding.detailEnlargedImage);
         }
     }
 }

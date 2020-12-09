@@ -40,7 +40,9 @@
                         android:id="@+id/imageTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="20sp"/>
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"/>
                     <TextView
                         android:id="@+id/imageDate"
                         android:layout_width="match_parent"
@@ -49,6 +51,7 @@
                         android:layout_marginTop="2dp"
                         android:textSize="12sp"
                         android:textColor="@color/white"
+                        android:textStyle="italic"
                         />
                     <TextView
                         android:id="@+id/imageExplanation"

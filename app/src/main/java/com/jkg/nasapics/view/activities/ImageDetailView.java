@@ -1,6 +1,7 @@
 package com.jkg.nasapics.view.activities;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +25,8 @@ public class ImageDetailView extends AppCompatActivity {
         ImageDetailViewPagerAdapter detailViewPagerAdapter = new ImageDetailViewPagerAdapter(detailsModelList,this);
         binding.imageDetailViewPager.setAdapter(detailViewPagerAdapter);
         binding.imageDetailViewPager.setCurrentItem(position,false);
-        binding.imageDetailViewPager.setOffscreenPageLimit(detailsModelList.size());
+        Toast.makeText(this, "Swipe Left/Right to view more", Toast.LENGTH_SHORT).show();
+
     }
 
 }

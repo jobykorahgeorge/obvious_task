@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.jkg.nasapics.R;
 import com.jkg.nasapics.databinding.GridViewRecyclerItemBinding;
 import com.jkg.nasapics.interfaces.HomeGridItemClickListener;
 import com.jkg.nasapics.models.ImageDetailsModel;
@@ -52,8 +53,8 @@ public class HomeGridRecyclerAdapter extends RecyclerView.Adapter<HomeGridRecycl
         }
 
         void bind(String image,int position){
-            Glide.with(context).load(image).into(binding.recyclerGridItemImage);
-            binding.recyclerGridItemImage.setOnClickListener(v -> itemClickListener.itemClickedAtPosition(position));
+            Glide.with(context).load(image).placeholder(R.drawable.static_placeholder_image).into(binding.recyclerGridItemImage);
+            binding.recyclerGridItemImage.setOnClickListener(v -> itemClickListener.itemClickedAtPosition(position,binding.recyclerGridItemImage));
         }
     }
 }
