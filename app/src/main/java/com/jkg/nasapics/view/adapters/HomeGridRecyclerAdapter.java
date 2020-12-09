@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.jkg.nasapics.databinding.GridViewRecyclerItemBinding;
+import com.jkg.nasapics.interfaces.HomeGridItemClickListener;
 import com.jkg.nasapics.models.ImageDetailsModel;
 
 import java.util.List;
@@ -18,10 +19,12 @@ public class HomeGridRecyclerAdapter extends RecyclerView.Adapter<HomeGridRecycl
 
     private Context context;
     private List<ImageDetailsModel> detailsModelList;
+    HomeGridItemClickListener itemClickListener;
 
     public HomeGridRecyclerAdapter(Context context, List<ImageDetailsModel> detailsModelList) {
         this.context = context;
         this.detailsModelList = detailsModelList;
+        this.itemClickListener = (HomeGridItemClickListener)context;
     }
 
     @NonNull
@@ -33,7 +36,7 @@ public class HomeGridRecyclerAdapter extends RecyclerView.Adapter<HomeGridRecycl
 
     @Override
     public void onBindViewHolder(@NonNull GridViewHolder holder, int position) {
-        holder.bind(detailsModelList.get(position).getUrl());
+        holder.bind(detailsModelList.get(position).getUrl(),position);
     }
 
     @Override
@@ -48,8 +51,9 @@ public class HomeGridRecyclerAdapter extends RecyclerView.Adapter<HomeGridRecycl
             binding = itemView;
         }
 
-        void bind(String image){
+        void bind(String image,int position){
             Glide.with(context).load(image).into(binding.recyclerGridItemImage);
+            binding.recyclerGridItemImage.setOnClickListener(v -> itemClickListener.itemClickedAtPosition(position));
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.jkg.nasapics.view.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -8,14 +9,16 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.jkg.nasapics.databinding.HomeGridViewActivityBinding;
+import com.jkg.nasapics.interfaces.HomeGridItemClickListener;
 import com.jkg.nasapics.models.ImageDetailsModel;
 import com.jkg.nasapics.view.adapters.HomeGridRecyclerAdapter;
 import com.jkg.nasapics.viewmodel.ImageDetailsViewModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeGridView extends AppCompatActivity {
+public class HomeGridView extends AppCompatActivity implements HomeGridItemClickListener {
     HomeGridViewActivityBinding binding;
     List<ImageDetailsModel> detailsModelList = new ArrayList<>();
     ImageDetailsViewModel detailsViewModel;
@@ -48,5 +51,13 @@ public class HomeGridView extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void itemClickedAtPosition(int position) {
+        Intent detailViewIntent = new Intent(HomeGridView.this,ImageDetailView.class);
+        detailViewIntent.putExtra("data",(Serializable)detailsModelList);
+        detailViewIntent.putExtra("position",position);
+        startActivity(detailViewIntent);
     }
 }
