@@ -23,7 +23,8 @@ public class ImageDetailView extends AppCompatActivity {
         int position = getIntent().getIntExtra("position",0);
         ImageDetailViewPagerAdapter detailViewPagerAdapter = new ImageDetailViewPagerAdapter(detailsModelList,this);
         binding.imageDetailViewPager.setAdapter(detailViewPagerAdapter);
-        binding.imageDetailViewPager.setCurrentItem(position);
+        binding.imageDetailViewPager.setCurrentItem(position,false);
+        binding.imageDetailViewPager.setOffscreenPageLimit(detailsModelList.size());
     }
 
 }
