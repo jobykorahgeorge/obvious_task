@@ -1,6 +1,8 @@
 package com.jkg.nasapics.models;
 
-public class ImageDetailsModel {
+import java.io.Serializable;
+
+public class ImageDetailsModel implements Serializable {
     private String copyright;
     private String date;
     private String explanation;
