@@ -2,7 +2,6 @@ package com.jkg.nasapics.view.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -18,8 +17,8 @@ import java.util.List;
 
 public class HomeGridRecyclerAdapter extends RecyclerView.Adapter<HomeGridRecyclerAdapter.GridViewHolder> {
 
-    private Context context;
-    private List<ImageDetailsModel> detailsModelList;
+    private final Context context;
+    private final List<ImageDetailsModel> detailsModelList;
     HomeGridItemClickListener itemClickListener;
 
     public HomeGridRecyclerAdapter(Context context, List<ImageDetailsModel> detailsModelList) {

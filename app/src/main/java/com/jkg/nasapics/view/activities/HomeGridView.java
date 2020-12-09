@@ -19,7 +19,11 @@ import com.jkg.nasapics.viewmodel.ImageDetailsViewModel;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @implNote  The root launch activity with grid view image adapter.
+ * View binding is used to connect activity with layout view.
+ * Data for view is provided using ViewModelProviders.
+ * */
 public class HomeGridView extends AppCompatActivity implements HomeGridItemClickListener {
     HomeGridViewActivityBinding binding;
     List<ImageDetailsModel> detailsModelList = new ArrayList<>();
@@ -40,6 +44,7 @@ public class HomeGridView extends AppCompatActivity implements HomeGridItemClick
         viewModelObserver();
     }
 
+    /*This function observes the view model live data and updates the adapter*/
     private void viewModelObserver(){
         detailsViewModel.detailsLiveData.observe(this, imageDetailsModels -> {
             if(detailsModelList !=null) {
@@ -49,6 +54,7 @@ public class HomeGridView extends AppCompatActivity implements HomeGridItemClick
             recyclerAdapter.notifyDataSetChanged();
             binding.errorMessage.setVisibility(View.GONE);
         });
+        /*If any error occurred while parsing json file error layout will be shown*/
         detailsViewModel.parseError.observe(this, isError -> {
             if(isError!=null){
                 binding.errorMessage.setVisibility(isError? View.VISIBLE: View.GONE);
@@ -56,11 +62,17 @@ public class HomeGridView extends AppCompatActivity implements HomeGridItemClick
         });
     }
 
+    /**
+     * On click of a particular image in grid view the position and data is passed to
+     * ImageDetailView Activity.
+     * ### Data is passed rather than making a provider in another activity because file read-write is slower than passing serialised data ###
+     * */
     @Override
     public void itemClickedAtPosition(int position, View imageView) {
         Intent detailViewIntent = new Intent(HomeGridView.this,ImageDetailView.class);
         detailViewIntent.putExtra("data",(Serializable)detailsModelList);
         detailViewIntent.putExtra("position",position);
+        /*Transition of activity with sharing element{ImageView}*/
         ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this,imageView,"image");
         startActivity(detailViewIntent,options.toBundle());
     }

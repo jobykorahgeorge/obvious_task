@@ -2,7 +2,6 @@ package com.jkg.nasapics.view.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -17,8 +16,8 @@ import java.util.List;
 
 public class ImageDetailViewPagerAdapter extends RecyclerView.Adapter<ImageDetailViewPagerAdapter.ImageDetailViewHolder> {
 
-    private List<ImageDetailsModel> detailsModelList;
-    private Context context;
+    private final List<ImageDetailsModel> detailsModelList;
+    private final Context context;
 
     public ImageDetailViewPagerAdapter(List<ImageDetailsModel> detailsModelList, Context context) {
         this.detailsModelList = detailsModelList;
